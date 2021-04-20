@@ -33,20 +33,27 @@ function Discover() {
   return (
     <div className="results">
       <WatchProviders selectedProviders={providers} onChange={(newProviders) => { setProviders(newProviders); }} />
-      <h2>Discover Movies</h2>
-      {movies && movies.map(movie => (
-          <div className="movie" key={movie.id}>
-            <h3>{movie.original_title}</h3>
-            <p>{movie.overview}</p>
-          </div>
-      ))}
-      <h2>Discover Shows</h2>
-      {shows && shows.map(show => (
+      
+      <div className="row">
+        <div className="col-sm-6">
+          <h2>Discover Movies</h2>
+          {movies && movies.map(movie => (
+            <div className="movie" key={movie.id}>
+              <h3>{movie.original_title}</h3>
+              <p>{movie.overview}</p>
+            </div>
+          ))}
+        </div>
+        <div className="col-sm-6">
+        <h2>Discover Shows</h2>
+        {shows && shows.map(show => (
           <div className="show" key={show.id}>
             <h3>{show.name}</h3>
             <p>{show.overview}</p>
           </div>
-      ))}
+        ))}
+        </div>
+      </div>
     </div>
   );
 }
