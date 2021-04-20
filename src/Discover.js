@@ -26,6 +26,7 @@ function Discover() {
           <div className="movie" key={movie.id}>
             <h3>{movie.original_title}</h3>
             <p>{movie.overview}</p>
+            <img src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} /> 
           </div>
       ))}
       <h2>Discover Shows</h2>
@@ -33,6 +34,7 @@ function Discover() {
           <div className="show" key={show.id}>
             <h3>{show.name}</h3>
             <p>{show.overview}</p>
+            <img src={"https://image.tmdb.org/t/p/w200" + show.poster_path} />
           </div>
       ))}
     </div>
