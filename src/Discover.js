@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { API_KEY } from './Constants';
+import { getAPI } from './lib/API';
 import WatchProviders from './WatchProviders';
-const API_URL = 'https://api.themoviedb.org/3';
 
-function getMovieAPI(endpoint) {
-    return fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&${endpoint}`)
-      .then(response => response.json());
+function getMovieAPI(params) {
+  return getAPI('/discover/movie', params);
 }
 
-function getShowAPI(endpoint) {
-return fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&${endpoint}`)
-    .then(response => response.json());
+function getShowAPI(params) {
+  return getAPI('/discover/tv', params);
 }
 
 function Discover() {
   const [movies, setMovies] = useState(null)
   const [shows, setShows] = useState(null)
   useEffect(() => {
-    getMovieAPI('sort_by=popularity.desc').then((json) => {setMovies(json.results)})
-    getShowAPI('sort_by=popularity.desc').then((json) => {setShows(json.results)})
+    getMovieAPI({ 'sort_by': 'popularity.desc' }).then((json) => {setMovies(json.results)})
+    getShowAPI({ 'sort_by': 'popularity.desc' }).then((json) => {setShows(json.results)})
   }, []);
  
   return (
