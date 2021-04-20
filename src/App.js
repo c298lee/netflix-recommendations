@@ -1,22 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { API_KEY } from './Constants';
+
+const API_URL = 'https://api.themoviedb.org/3';
+
+function getAPI(endpoint) {
+  return fetch(`${API_URL}${endpoint}?api_key=${API_KEY}`)
+    .then(response => response.json());
+}
 
 function App() {
+  function handleLogin() {
+    getAPI('/authentication/token/new')
+      .then(json => { console.log(json); });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <a className="App-link" href="#login" onClick={handleLogin}>Log in to TMDB</a>
       </header>
     </div>
   );
