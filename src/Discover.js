@@ -19,6 +19,7 @@ function Discover() {
     const params = {
       'sort_by': 'popularity.desc',
       'watch_region': 'CA',
+      'with_release_type': '4|6',
     };
 
     if (providers) {
