@@ -13,14 +13,25 @@ function getShowAPI(params) {
 function Discover() {
   const [movies, setMovies] = useState(null)
   const [shows, setShows] = useState(null)
+  const [providers, setProviders] = useState('');
+
   useEffect(() => {
-    getMovieAPI({ 'sort_by': 'popularity.desc' }).then((json) => {setMovies(json.results)})
-    getShowAPI({ 'sort_by': 'popularity.desc' }).then((json) => {setShows(json.results)})
-  }, []);
+    const params = {
+      'sort_by': 'popularity.desc',
+      'watch_region': 'CA',
+    };
+
+    if (providers) {
+      params.with_watch_providers = providers;
+    }
+
+    getMovieAPI(params).then((json) => {setMovies(json.results)})
+    getShowAPI(params).then((json) => {setShows(json.results)})
+  }, [providers]);
  
   return (
     <div className="results">
-      <WatchProviders />
+      <WatchProviders selectedProviders={providers} onChange={(newProviders) => { setProviders(newProviders); }} />
       <h2>Discover Movies</h2>
       {movies && movies.map(movie => (
           <div className="movie" key={movie.id}>
