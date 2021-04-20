@@ -6,9 +6,7 @@ const LOGO_SIZE = 'w45';
 
 function WatchProviders({ selectedProviders, onChange }) {
   const [providers, setProviders] = useState([]);
-  console.log(providers);
   const selected = selectedProviders ? selectedProviders.split('|').map(id => parseInt(id)) : [];
-  console.log(selected);
 
   useEffect(() => {
     getAPI('/watch/providers/tv', { 'watch_region': 'CA' })

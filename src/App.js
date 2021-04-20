@@ -27,7 +27,7 @@ function Session({ handleSession, location }) {
     return <h1>Loading...</h1>;
   }
 
-  return <Redirect to="/" />;
+  return <Redirect to="/discover" />;
 }
 
 function App() {
@@ -37,15 +37,13 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home
-            session={session}
-          />
+          <Home session={session} />
         </Route>
         <Route path="/approved" render={({ location }) => (
           <Session location={location} handleSession={(newSession) => { setSession(newSession); }} />
         )} />
         <Route path="/discover">
-          <Discover/>
+          <Discover session={session} />
         </Route>
       </Switch>
     </Router>
