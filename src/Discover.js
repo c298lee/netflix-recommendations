@@ -75,7 +75,7 @@ function Discover({ session }) {
               <h3>{movie.original_title}</h3>
               <p>{movie.overview}</p>
               <img src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} />
-              <WatchlistButton sessionId={session} accountId={accountId} mediaId={movie.id} mediaType="movie" />
+              {session && accountId && <WatchlistButton sessionId={session} accountId={accountId} mediaId={movie.id} mediaType="movie" />}
             </div>
           ))}
         </div>
@@ -87,7 +87,7 @@ function Discover({ session }) {
             <h3>{show.name}</h3>
             <p>{show.overview}</p>
             <img src={"https://image.tmdb.org/t/p/w200" + show.poster_path} />
-            <WatchlistButton sessionId={session} accountId={accountId} mediaId={show.id} mediaType="tv" />
+            {session && accountId && <WatchlistButton sessionId={session} accountId={accountId} mediaId={show.id} mediaType="tv" />}
           </div>
         ))}
         </div>
