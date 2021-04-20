@@ -9,12 +9,14 @@ function Home({ session }) {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <a className="App-link" href="#login" onClick={handleLogin}>Log in to TMDB</a>
-        {session && <p>Session ID is: {session}</p>}
-      </header>
-    </div>
+    <header>
+      <h1>Netflix Recommendations</h1>
+      {session ? (
+          <p>Session ID is: {session}</p>
+      ) : (
+        <a href="#login" onClick={handleLogin}>Log in to TMDB</a>
+      )}
+    </header>
   );
 }
 
