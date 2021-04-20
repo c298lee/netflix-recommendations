@@ -33,7 +33,6 @@ function Discover() {
   return (
     <div className="results">
       <WatchProviders selectedProviders={providers} onChange={(newProviders) => { setProviders(newProviders); }} />
-      
       <div className="row">
         <div className="col-sm-6">
           <h2>Discover Movies</h2>
