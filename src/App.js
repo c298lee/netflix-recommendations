@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { useEffect, useState } from 'react';
 import { getAPI } from './lib/API';
 import queryString from 'query-string';
+import Discover from './Discover';
 
 function Session({ handleSession, location }) {
   const { request_token } = queryString.parse(location.search);
@@ -43,6 +44,9 @@ function App() {
         <Route path="/approved" render={({ location }) => (
           <Session location={location} handleSession={(newSession) => { setSession(newSession); }} />
         )} />
+        <Route path="/discover">
+          <Discover/>
+        </Route>
       </Switch>
     </Router>
   );

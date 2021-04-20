@@ -16,6 +16,7 @@ function Home({ session }) {
       ) : (
         <a href="#login" onClick={handleLogin}>Log in to TMDB</a>
       )}
+      <a href = "/discover">Discover</a>
     </header>
   );
 }
